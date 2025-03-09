@@ -52,6 +52,7 @@ class TrimPipe implements PipelineInterface
 
 ### 3️⃣ Execute the Pipeline
 
+#### 3.1 using through method to manually pass the pipes
 ```php
 $result = $pipeline
     ->send($userRegisterDTO)
@@ -59,6 +60,12 @@ $result = $pipeline
         App\Pipe\SetPasswordPipe::class,
         App\Pipe\SendWelcomeEmailPipe::class,
     ])
+    ->thenReturn();
+```
+#### 3.2 using withConfig method to use config from pipeline.yaml
+```php
+$result = $pipeline
+    ->withConfig('my_pipeline')
     ->thenReturn();
 ```
 
