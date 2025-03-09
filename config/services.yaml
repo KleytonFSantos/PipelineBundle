@@ -19,7 +19,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-            -
+
     KleytonSantos\Pipeline\Pipeline:
         arguments:
             $parameterBag: '@parameter_bag'
