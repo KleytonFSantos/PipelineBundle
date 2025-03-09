@@ -1,6 +1,7 @@
 {
     "name": "kleytonsantos/pipeline-bundle",
     "type": "library",
+    "description": "A symfony package to handle a pipeline structure",
     "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
