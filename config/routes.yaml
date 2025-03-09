@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/PipelineBundle/
+        namespace: App\Controller
+    type: attribute

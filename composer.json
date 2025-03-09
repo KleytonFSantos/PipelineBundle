@@ -1,0 +1,41 @@
+{
+    "name": "kleytonsantos/pipeline-bundle",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "secure-http": false,
+        "sort-packages": true,
+        "bin-dir": "bin/",
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true
+        }
+    },
+    "require": {
+        "php": ">=8.3",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/framework-bundle": "7.2.*",
+        "symfony/yaml": "7.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.5",
+        "symfony/var-dumper": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KleytonSantos\\Pipeline\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
