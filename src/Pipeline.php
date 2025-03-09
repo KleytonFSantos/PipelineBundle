@@ -39,14 +39,6 @@ class Pipeline
         return $this;
     }
 
-    /**
-     * Sets the pipes (stages) through which the passable will be processed.
-     *
-     * This method allows you to manually specify the pipes to be used in the pipeline.
-     *
-     * @param array $pipes An array of pipes (callables or class names) to process the passable.
-     * @return static Returns the current pipeline instance for method chaining.
-     */
     public function through(array $pipes): static
     {
         $this->pipes = $pipes;
