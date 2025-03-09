@@ -18,6 +18,7 @@ class PipelineExtension extends Extension
         $container->setParameter('pipeline.config', $config['pipelines'] ?? []);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load(__DIR__.'/../../config/services.yaml');
     }
 
     public function getAlias(): string
