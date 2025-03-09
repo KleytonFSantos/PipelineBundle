@@ -28,8 +28,8 @@ Adding a pipeline configuration to config/packages/pipeline.yaml:
 pipeline:
     pipelines:
         my_pipeline:
-            - my_step1
-            - my_step2
+            - my_pipe1
+            - my_pipe2
 ```
 
 ### 2️⃣  Custom Pipes
@@ -53,18 +53,22 @@ class TrimPipe implements PipelineInterface
 ### 3️⃣ Execute the Pipeline
 
 #### 3.1 using through method to manually pass the pipes
+
 ```php
 $result = $pipeline
-    ->send($userRegisterDTO)
+    ->send($passable)
     ->through([
-        App\Pipe\SetPasswordPipe::class,
-        App\Pipe\SendWelcomeEmailPipe::class,
+        App\Pipe\CustomPipe1::class,
+        App\Pipe\CustomPipe2::class,
     ])
     ->thenReturn();
 ```
+
 #### 3.2 using withConfig method to use config from pipeline.yaml
+
 ```php
 $result = $pipeline
+    ->send($passable)
     ->withConfig('my_pipeline')
     ->thenReturn();
 ```
