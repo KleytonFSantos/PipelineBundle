@@ -39,7 +39,7 @@ pipeline:
 
 declare(strict_types=1);
 
-namespace KleytonSantos\Pipeline\Tests\PipesMock;
+namespace App\Pipe;
 
 class TrimPipe implements PipelineInterface
 {
