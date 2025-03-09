@@ -5,6 +5,7 @@ namespace KleytonSantos\Pipeline;
 use Closure;
 use InvalidArgumentException;
 use RuntimeException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class Pipeline
@@ -14,7 +15,10 @@ class Pipeline
     private array $pipes = [];
     private string $method = 'handle';
 
-    public function __construct(private readonly ParameterBagInterface $parameterBag)
+    public function __construct(
+        private readonly ParameterBagInterface $parameterBag,
+        private readonly ContainerInterface $container
+    )
     {
         $this->config = $this->parameterBag->get('pipeline.config');
     }
@@ -76,7 +80,7 @@ class Pipeline
                 } elseif (is_object($pipe)) {
                     return $pipe->{$this->method}($passable, $stack);
                 } elseif (is_string($pipe) && class_exists($pipe)) {
-                    $pipeInstance = new $pipe();
+                    $pipeInstance = $this->container->get($pipe);
                     return $pipeInstance->{$this->method}($passable, $stack);
                 } else {
                     throw new InvalidArgumentException('Invalid pipe type.');
