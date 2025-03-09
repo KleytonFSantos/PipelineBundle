@@ -18,8 +18,7 @@ class Pipeline
     public function __construct(
         private readonly ParameterBagInterface $parameterBag,
         private readonly ContainerInterface $container
-    )
-    {
+    ) {
         $this->config = $this->parameterBag->get('pipeline.config');
     }
 
